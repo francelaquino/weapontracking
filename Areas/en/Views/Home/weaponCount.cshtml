@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="dashboard-stat blue">
+        <div class="visual">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </div>
+        <div class="details">
+            <div class="number">
+                <span data-counter="counterup">@ViewData["checkoutToday"]</span>
+            </div>
+            <div class="desc"> Checkout Weapon </div>
+        </div>
+
+    </div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="dashboard-stat red">
+        <div class="visual">
+            <i class="fa fa-indent" aria-hidden="true"></i>
+        </div>
+        <div class="details">
+            <div class="number">
+                <span data-counter="counterup">@ViewData["checkinToday"]</span>
+            </div>
+            <div class="desc"> Checkin Weapon </div>
+        </div>
+
+    </div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="dashboard-stat green">
+        <div class="visual">
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
+        </div>
+        <div class="details">
+            <div class="number">
+                <span data-counter="counterup">@ViewData["actualCheckout"]</span>
+            </div>
+            <div class="desc"> Actual Checkout </div>
+        </div>
+
+    </div>
+</div>

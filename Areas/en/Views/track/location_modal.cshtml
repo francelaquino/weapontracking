@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Map";
+    Layout = null;
+}
+@*<link rel="stylesheet" type="text/css" href="~/assets/mapplic/css/style.css">*@
+
+
+      
+
+
+
+
+
+
+               
+                    <div class="map-container">
+
+                        <!-- Map -->
+                        <div id="mapplic"></div>
+                        <div id="second"></div>
+                    </div>
+
+
+
+<link rel="stylesheet" type="text/css" href="~/assets/mapplic/css/magnific-popup.css">
+<link rel="stylesheet" type="text/css" href="~/assets/mapplic/mapplic/mapplic.css">
+<script type="text/javascript" src="~/assets/mapplic/js/hammer.min.js"></script>
+<script type="text/javascript" src="~/assets/mapplic/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="~/assets/mapplic/js/script.js"></script>
+<script type="text/javascript" src="~/assets/mapplic/js/magnific-popup.js"></script>
+<script type="text/javascript" src="~/assets/mapplic/mapplic/mapplic.js"></script>
+
+<script type="text/javascript">
+    
+    setTimeout(function () {
+        $('.modal-title').text('@ViewData["maptitle"]');
+        $("#mapplic").empty();
+        var data = JSON.parse('@Html.Raw(@ViewData["maprecord"].ToString())');
+
+        var map = $('#mapplic').mapplic({
+            source: data,
+            minimap: false,
+            sidebar: false,
+            fillcolor: '#4d5e6d',
+            maxscale: 3,
+            height: 480,
+            sidebar: false,
+            minimap: false,
+            zoom: true,
+            fullscreen: false,
+            skin: 'mapplic-dark',
+
+        });
+
+
+
+
+        var self = map.data('mapplic');
+
+
+    }, 1000); // How long do you want the delay to be (in milliseconds)? 
+</script>
+

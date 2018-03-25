@@ -1,0 +1,51 @@
+﻿@model List<FMS.Models.mdlTrack>
+@{
+    Layout = null;
+}
+<table class="table table-striped table-bordered table-hover  order-column" id="data_list">
+    <thead>
+        <tr>
+            <th>Weapon</th>
+            <th>Location</th>
+            <th>Door</th>
+            <th>Access</th>
+            <th style=" width:150px">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var records in Model)
+            {
+                <tr>
+                    <td><a href="javascript:void(0)" onclick="displayFirearmPictures('@records.DEFPIC')">@records.FIREARMTYPE </a> </td>
+                    <td>@records.LOCATION</td>
+                    <td>@records.DOOR</td>
+                    <td>@records.ACCESS</td>
+                    <td>
+                        <button onclick="details('@records.F_ID')" data-toggle="modal" class="btn btn-sm green btn-outline ">
+                            <i class="fa fa-edit"></i> Details
+                        </button>
+                        <button onclick="edit('@records.ID')" data-toggle="modal" class="btn btn-sm green btn-outline ">
+                            <i class="fa fa-edit"></i> Edit
+                        </button>
+                    </td>
+                    
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+        $('#data_list').dataTable({ bFilter: false });
+
+    });
+
+</script>
+
+

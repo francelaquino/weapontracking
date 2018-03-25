@@ -1,0 +1,15 @@
+﻿@model IEnumerable<FMS.Models.mdlRFID>
+
+@foreach (var records in Model)
+{
+    <div class="col-xs-18 col-sm-6 col-md-3" id="@records.GID">
+        <div class="thumbnail">
+            <img src="@Url.Content(@records.DEFPIC)" style="cursor:hand;cursor:pointer; " onclick="displayFirearmPictures('@records.DEFPIC')" alt="@records.ITEM">
+            <div  style=" display:inline-block">
+                <h4><button type="button" class="btn-circle btn btn-circle-micro btn-primary" onclick="details('@records.GID')"><i class="fa fa-info"></i></button> @records.ITEM  </h4>
+
+            </div>
+
+        </div>
+    </div>
+}

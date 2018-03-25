@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{99B7F355-4D86-4C33-BC1E-434B3724FC5C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FMS</RootNamespace>
+    <AssemblyName>FMS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\en\Models\" />
+    <Folder Include="Content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\en\Controllers\AssigneeController.cs" />
+    <Compile Include="Areas\en\Controllers\CheckoutController.cs" />
+    <Compile Include="Areas\en\Controllers\FirearmController.cs" />
+    <Compile Include="Areas\en\Controllers\Condition.cs" />
+    <Compile Include="Areas\en\Controllers\Accessories.cs" />
+    <Compile Include="Areas\en\Controllers\HomeController.cs" />
+    <Compile Include="Areas\en\Controllers\LocationController.cs" />
+    <Compile Include="Areas\en\Controllers\MapController.cs" />
+    <Compile Include="Areas\en\Controllers\Door.cs" />
+    <Compile Include="Areas\en\Controllers\ReaderController.cs" />
+    <Compile Include="Areas\en\Controllers\Storage.cs" />
+    <Compile Include="Areas\en\Controllers\AssigneeType.cs" />
+    <Compile Include="Areas\en\Controllers\Supplier.cs" />
+    <Compile Include="Areas\en\Controllers\Manufacturer.cs" />
+    <Compile Include="Areas\en\Controllers\FirearmtypeController.cs" />
+    <Compile Include="Areas\en\Controllers\TrackController.cs" />
+    <Compile Include="Areas\en\Controllers\WeaponAccessController.cs" />
+    <Compile Include="Areas\en\Controllers\ZoneController.cs" />
+    <Compile Include="Areas\en\enAreaRegistration.cs" />
+    <Compile Include="classes\Db_Connections.cs" />
+    <Compile Include="classes\Functions.cs" />
+    <Compile Include="classes\PopulateDropDown.cs" />
+    <Compile Include="classes\Utilities.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\mdlCondition.cs" />
+    <Compile Include="Models\mdlMap.cs" />
+    <Compile Include="Models\mdlLocation.cs" />
+    <Compile Include="Models\mdlAssignee.cs" />
+    <Compile Include="Models\mdlAccessories.cs" />
+    <Compile Include="Models\mdlFirearm.cs" />
+    <Compile Include="Models\mdlMapModel.cs" />
+    <Compile Include="Models\mdlGate.cs" />
+    <Compile Include="Models\mdlReaders.cs" />
+    <Compile Include="Models\mdlStorage.cs" />
+    <Compile Include="Models\mdlAssigneeType.cs" />
+    <Compile Include="Models\mdlSupplier.cs" />
+    <Compile Include="Models\mdlManufacturer.cs" />
+    <Compile Include="Models\mdlFirearmType.cs" />
+    <Compile Include="Models\mdlRFID.cs" />
+    <Compile Include="Models\mdlTrack.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\global\css\components-md.css" />
+    <Content Include="assets\global\css\components-md.min.css" />
+    <Content Include="assets\global\css\components-rounded.css" />
+    <Content Include="assets\global\css\components-rounded.min.css" />
+    <Content Include="assets\global\css\components.css" />
+    <Content Include="assets\global\css\components.min.css" />
+    <Content Include="assets\global\css\plugins-md.css" />
+    <Content Include="assets\global\css\plugins-md.min.css" />
+    <Content Include="assets\global\css\plugins.css" />
+    <Content Include="assets\global\css\plugins.min.css" />
+    <Content Include="assets\global\plugins\bootstrap-hover-dropdown\bootstrap-hover-dropdown.js" />
+    <Content Include="assets\global\plugins\bootstrap-hover-dropdown\bootstrap-hover-dropdown.min.js" />
+    <Content Include="assets\global\plugins\bootstrap-switch\css\bootstrap-switch.css" />
+    <Content Include="assets\global\plugins\bootstrap-switch\css\bootstrap-switch.min.css" />
+    <Content Include="assets\global\plugins\bootstrap-switch\js\bootstrap-switch.js" />
+    <Content Include="assets\global\plugins\bootstrap-switch\js\bootstrap-switch.min.js" />
+    <Content Include="assets\global\plugins\bootstrap\css\bootstrap.css" />
+    <Content Include="assets\global\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="assets\global\plugins\bootstrap\fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\global\plugins\bootstrap\js\bootstrap.js" />
+    <Content Include="assets\global\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="assets\global\plugins\datatables\datatables.all.min.js" />
+    <Content Include="assets\global\plugins\datatables\datatables.css" />
+    <Content Include="assets\global\plugins\datatables\datatables.js" />
+    <Content Include="assets\global\plugins\datatables\datatables.min.css" />
+    <Content Include="assets\global\plugins\datatables\datatables.min.js" />
+    <Content Include="assets\global\plugins\datatables\images\back_disabled.png" />
+    <Content Include="assets\global\plugins\datatables\images\back_enabled.png" />
+    <Content Include="assets\global\plugins\datatables\images\back_enabled_hover.png" />
+    <Content Include="assets\global\plugins\datatables\images\favicon.ico" />
+    <Content Include="assets\global\plugins\datatables\images\forward_disabled.png" />
+    <Content Include="assets\global\plugins\datatables\images\forward_enabled.png" />
+    <Content Include="assets\global\plugins\datatables\images\forward_enabled_hover.png" />
+    <Content Include="assets\global\plugins\datatables\images\sort_asc.png" />
+    <Content Include="assets\global\plugins\datatables\images\sort_asc_disabled.png" />
+    <Content Include="assets\global\plugins\datatables\images\sort_both.png" />
+    <Content Include="assets\global\plugins\datatables\images\sort_desc.png" />
+    <Content Include="assets\global\plugins\datatables\images\sort_desc_disabled.png" />
+    <Content Include="assets\global\plugins\datatables\plugins\bootstrap\datatables.bootstrap.css" />
+    <Content Include="assets\global\plugins\datatables\plugins\bootstrap\datatables.bootstrap.js" />
+    <Content Include="assets\global\plugins\excanvas.min.js" />
+    <Content Include="assets\global\plugins\font-awesome\css\font-awesome.css" />
+    <Content Include="assets\global\plugins\font-awesome\css\font-awesome.min.css" />
+    <Content Include="assets\global\plugins\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\global\plugins\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="assets\global\plugins\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="assets\global\plugins\jquery.blockui.min.js" />
+    <Content Include="assets\global\plugins\jquery.min.js" />
+    <Content Include="assets\global\plugins\js.cookie.min.js" />
+    <Content Include="assets\global\plugins\respond.min.js" />
+    <Content Include="assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.dev.svg" />
+    <Content Include="assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.svg" />
+    <Content Include="assets\global\plugins\simple-line-icons\icons-lte-ie7.js" />
+    <Content Include="assets\global\plugins\simple-line-icons\License.txt" />
+    <Content Include="assets\global\plugins\simple-line-icons\Readme.txt" />
+    <Content Include="assets\global\plugins\simple-line-icons\simple-line-icons.css" />
+    <Content Include="assets\global\plugins\simple-line-icons\simple-line-icons.min.css" />
+    <Content Include="assets\global\plugins\uniform\css\uniform.default.css" />
+    <Content Include="assets\global\plugins\uniform\css\uniform.default.min.css" />
+    <Content Include="assets\global\plugins\uniform\images\bg-input-focus.png" />
+    <Content Include="assets\global\plugins\uniform\images\bg-input.png" />
+    <Content Include="assets\global\plugins\uniform\images\sprite.png" />
+    <Content Include="assets\global\plugins\uniform\images\sprite_original.png" />
+    <Content Include="assets\global\plugins\uniform\jquery.uniform.js" />
+    <Content Include="assets\global\plugins\uniform\jquery.uniform.min.js" />
+    <Content Include="assets\global\scripts\app.js" />
+    <Content Include="assets\global\scripts\datatable.js" />
+    <Content Include="assets\layouts\global\img\accordion-plusminus.png" />
+    <Content Include="assets\layouts\global\img\ajax-loading.gif" />
+    <Content Include="assets\layouts\global\img\ajax-modal-loading.gif" />
+    <Content Include="assets\layouts\global\img\datatable-row-openclose.png" />
+    <Content Include="assets\layouts\global\img\input-spinner.gif" />
+    <Content Include="assets\layouts\global\img\loading-spinner-blue.gif" />
+    <Content Include="assets\layouts\global\img\loading-spinner-default.gif" />
+    <Content Include="assets\layouts\global\img\loading-spinner-grey.gif" />
+    <Content Include="assets\layouts\global\img\loading.gif" />
+    <Content Include="assets\layouts\global\img\overlay-icon.png" />
+    <Content Include="assets\layouts\global\img\portlet-collapse-icon-white.png" />
+    <Content Include="assets\layouts\global\img\portlet-collapse-icon.png" />
+    <Content Include="assets\layouts\global\img\portlet-config-icon-white.png" />
+    <Content Include="assets\layouts\global\img\portlet-config-icon.png" />
+    <Content Include="assets\layouts\global\img\portlet-expand-icon-white.png" />
+    <Content Include="assets\layouts\global\img\portlet-expand-icon.png" />
+    <Content Include="assets\layouts\global\img\portlet-reload-icon-white.png" />
+    <Content Include="assets\layouts\global\img\portlet-reload-icon.png" />
+    <Content Include="assets\layouts\global\img\portlet-remove-icon-white.png" />
+    <Content Include="assets\layouts\global\img\portlet-remove-icon.png" />
+    <Content Include="assets\layouts\global\img\remove-icon-small.png" />
+    <Content Include="assets\layouts\global\img\syncfusion-icons-white.png" />
+    <Content Include="assets\layouts\global\img\syncfusion-icons.png" />
+    <Content Include="assets\layouts\global\scripts\app.js" />
+    <Content Include="assets\layouts\global\scripts\quick-sidebar.js" />
+    <Content Include="assets\layouts\global\scripts\quick-sidebar.min.js" />
+    <Content Include="assets\layouts\layout3\css\custom.css" />
+    <Content Include="assets\layouts\layout3\css\custom.min.css" />
+    <Content Include="assets\layouts\layout3\css\layout.css" />
+    <Content Include="assets\layouts\layout3\css\layout.min.css" />
+    <Content Include="assets\layouts\layout3\css\themes\blue-hoki.css" />
+    <Content Include="assets\layouts\layout3\css\themes\blue-hoki.min.css" />
+    <Content Include="assets\layouts\layout3\css\themes\blue-steel.css" />
+    <Content Include="assets\layouts\layout3\css\themes\blue-steel.min.css" />
+    <Content Include="assets\layouts\layout3\css\themes\default.css" />
+    <Content Include="assets\layouts\layout3\css\themes\default.min.css" />
+    <Content Include="assets\layouts\layout3\css\themes\green-haze.css" />
+    <Content Include="assets\layouts\layout3\css\themes\green-haze.min.css" />
+    <Content Include="assets\layouts\layout3\css\themes\purple-plum.css" />
+    <Content Include="assets\layouts\layout3\css\themes\purple-plum.min.css" />
+    <Content Include="assets\layouts\layout3\css\themes\purple-studio.css" />
+    <Content Include="assets\layouts\layout3\css\themes\purple-studio.min.css" />
+    <Content Include="assets\layouts\layout3\css\themes\red-intense.css" />
+    <Content Include="assets\layouts\layout3\css\themes\red-intense.min.css" />
+    <Content Include="assets\layouts\layout3\css\themes\red-sunglo.css" />
+    <Content Include="assets\layouts\layout3\css\themes\red-sunglo.min.css" />
+    <Content Include="assets\layouts\layout3\css\themes\yellow-crusta.css" />
+    <Content Include="assets\layouts\layout3\css\themes\yellow-crusta.min.css" />
+    <Content Include="assets\layouts\layout3\css\themes\yellow-orange.css" />
+    <Content Include="assets\layouts\layout3\css\themes\yellow-orange.min.css" />
+    <Content Include="assets\layouts\layout3\img\ajax-loading.gif" />
+    <Content Include="assets\layouts\layout3\img\ajax-modal-loading.gif" />
+    <Content Include="assets\layouts\layout3\img\avatar.png" />
+    <Content Include="assets\layouts\layout3\img\avatar1.jpg" />
+    <Content Include="assets\layouts\layout3\img\avatar10.jpg" />
+    <Content Include="assets\layouts\layout3\img\avatar11.jpg" />
+    <Content Include="assets\layouts\layout3\img\avatar2.jpg" />
+    <Content Include="assets\layouts\layout3\img\avatar3.jpg" />
+    <Content Include="assets\layouts\layout3\img\avatar4.jpg" />
+    <Content Include="assets\layouts\layout3\img\avatar5.jpg" />
+    <Content Include="assets\layouts\layout3\img\avatar6.jpg" />
+    <Content Include="assets\layouts\layout3\img\avatar7.jpg" />
+    <Content Include="assets\layouts\layout3\img\avatar8.jpg" />
+    <Content Include="assets\layouts\layout3\img\avatar9.jpg" />
+    <Content Include="assets\layouts\layout3\img\icon-color-close.png" />
+    <Content Include="assets\layouts\layout3\img\icon-color.png" />
+    <Content Include="assets\layouts\layout3\img\loading-spinner-default.gif" />
+    <Content Include="assets\layouts\layout3\img\loading-spinner-grey.gif" />
+    <Content Include="assets\layouts\layout3\img\loading.gif" />
+    <Content Include="assets\layouts\layout3\img\logo-big-white.png" />
+    <Content Include="assets\layouts\layout3\img\logo-big.png" />
+    <Content Include="assets\layouts\layout3\img\logo-blue-hoki.png" />
+    <Content Include="assets\layouts\layout3\img\logo-blue-steel.png" />
+    <Content Include="assets\layouts\layout3\img\logo-default.jpg" />
+    <Content Include="assets\layouts\layout3\img\logo-green-haze.png" />
+    <Content Include="assets\layouts\layout3\img\logo-purple-plum.png" />
+    <Content Include="assets\layouts\layout3\img\logo-purple-studio.png" />
+    <Content Include="assets\layouts\layout3\img\logo-red-intense.png" />
+    <Content Include="assets\layouts\layout3\img\logo-red-sunglo.png" />
+    <Content Include="assets\layouts\layout3\img\logo-yellow-crusta.png" />
+    <Content Include="assets\layouts\layout3\img\logo-yellow-orange.png" />
+    <Content Include="assets\layouts\layout3\img\logo.png" />
+    <Content Include="assets\layouts\layout3\img\menu-toggler.png" />
+    <Content Include="assets\layouts\layout3\scripts\demo.js" />
+    <Content Include="assets\layouts\layout3\scripts\demo.min.js" />
+    <Content Include="assets\layouts\layout3\scripts\layout.js" />
+    <Content Include="assets\layouts\layout3\scripts\layout.min.js" />
+    <Content Include="assets\mapplic\css\font-awesome.css" />
+    <Content Include="assets\mapplic\css\magnific-popup.css" />
+    <Content Include="assets\mapplic\css\map.css" />
+    <Content Include="assets\mapplic\css\style.css" />
+    <Content Include="assets\mapplic\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\mapplic\images\apartment\lower-small.jpg" />
+    <Content Include="assets\mapplic\images\apartment\lower.jpg" />
+    <Content Include="assets\mapplic\images\apartment\upper-small.jpg" />
+    <Content Include="assets\mapplic\images\apartment\upper.jpg" />
+    <Content Include="assets\mapplic\images\background.jpg" />
+    <Content Include="assets\mapplic\images\browser.png" />
+    <Content Include="assets\mapplic\images\button-divider.png" />
+    <Content Include="assets\mapplic\images\cart.png" />
+    <Content Include="assets\mapplic\images\cloth.png" />
+    <Content Include="assets\mapplic\images\food.png" />
+    <Content Include="assets\mapplic\images\health.png" />
+    <Content Include="assets\mapplic\images\icon-browser.png" />
+    <Content Include="assets\mapplic\images\icon-landmark.png" />
+    <Content Include="assets\mapplic\images\icon-layer.png" />
+    <Content Include="assets\mapplic\images\icon-link.png" />
+    <Content Include="assets\mapplic\images\icon-mobile.png" />
+    <Content Include="assets\mapplic\images\icon-responsive.png" />
+    <Content Include="assets\mapplic\images\logo.png" />
+    <Content Include="assets\mapplic\images\mail.png" />
+    <Content Include="assets\mapplic\images\mall\mall-ground-mini.jpg" />
+    <Content Include="assets\mapplic\images\mall\mall-ground.svg" />
+    <Content Include="assets\mapplic\images\mall\mall-level1-mini.jpg" />
+    <Content Include="assets\mapplic\images\mall\mall-level1.svg" />
+    <Content Include="assets\mapplic\images\mall\mall-underground-mini.jpg" />
+    <Content Include="assets\mapplic\images\mall\mall-underground.svg" />
+    <Content Include="assets\mapplic\images\misc.png" />
+    <Content Include="assets\mapplic\images\thumb1.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\amc.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\applebees.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\att.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\belk.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\cvs.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\gap.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\hm.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\jcpenney.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\kfc.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\macys.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\mcdonalds.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\oldnavy.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\petco.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\pizzahut.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\pullbear.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\sears.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\sephora.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\sportchek.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\starbucks.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\subway.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\walgreens.jpg" />
+    <Content Include="assets\mapplic\images\thumbs\zara.jpg" />
+    <Content Include="assets\mapplic\images\window.png" />
+    <Content Include="assets\mapplic\images\wordpress.png" />
+    <Content Include="assets\mapplic\images\wp.png" />
+    <Content Include="assets\mapplic\js\hammer.min.js" />
+    <Content Include="assets\mapplic\js\html5shiv.js" />
+    <Content Include="assets\mapplic\js\jquery.min.js" />
+    <Content Include="assets\mapplic\js\jquery.mousewheel.js" />
+    <Content Include="assets\mapplic\js\magnific-popup.js" />
+    <Content Include="assets\mapplic\js\script.js" />
+    <Content Include="assets\mapplic\mapplic\images\alpha20.png" />
+    <Content Include="assets\mapplic\mapplic\images\alpha50.png" />
+    <Content Include="assets\mapplic\mapplic\images\arrow-down%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\arrow-down.png" />
+    <Content Include="assets\mapplic\mapplic\images\arrow-up%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\arrow-up.png" />
+    <Content Include="assets\mapplic\mapplic\images\closedhand.cur" />
+    <Content Include="assets\mapplic\mapplic\images\cross%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\cross-light%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\cross-light.png" />
+    <Content Include="assets\mapplic\mapplic\images\cross.png" />
+    <Content Include="assets\mapplic\mapplic\images\error-icon.png" />
+    <Content Include="assets\mapplic\mapplic\images\fullscreen-exit.png" />
+    <Content Include="assets\mapplic\mapplic\images\fullscreen.png" />
+    <Content Include="assets\mapplic\mapplic\images\loader.gif" />
+    <Content Include="assets\mapplic\mapplic\images\minus%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\minus.png" />
+    <Content Include="assets\mapplic\mapplic\images\openhand.cur" />
+    <Content Include="assets\mapplic\mapplic\images\pin%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-blue%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-blue-large%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-blue-large.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-blue.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-filled.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-green%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-green-large%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-green-large.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-green.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-large%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-large.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-orange%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-orange-large%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-orange-large.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-orange.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-purple%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-purple-large%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-purple-large.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-purple.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-yellow%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-yellow-large%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-yellow-large.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin-yellow.png" />
+    <Content Include="assets\mapplic\mapplic\images\pin.png" />
+    <Content Include="assets\mapplic\mapplic\images\plus%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\plus.png" />
+    <Content Include="assets\mapplic\mapplic\images\reset%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\reset-light.png" />
+    <Content Include="assets\mapplic\mapplic\images\reset.png" />
+    <Content Include="assets\mapplic\mapplic\images\viewer%402x.png" />
+    <Content Include="assets\mapplic\mapplic\images\viewer.png" />
+    <Content Include="assets\mapplic\mapplic\mapplic-ie.css" />
+    <Content Include="assets\mapplic\mapplic\mapplic.css" />
+    <Content Include="assets\mapplic\mapplic\mapplic.js" />
+    <Content Include="assets\pages\css\fileinput.css" />
+    <Content Include="assets\pages\img\loading.gif" />
+    <Content Include="assets\pages\scripts\angular.min.js" />
+    <Content Include="assets\pages\scripts\app.js" />
+    <Content Include="assets\pages\scripts\fileinput.js" />
+    <Content Include="assets\pages\scripts\table-datatables-managed.min.js" />
+    <Content Include="assets\pages\scripts\ui-modals.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\en\Views\web.config" />
+    <Content Include="Areas\en\Views\Checkout\Index.cshtml" />
+    <Content Include="Areas\en\Views\Assignee\assignfirearm.cshtml" />
+    <Content Include="Areas\en\Views\Firearm\_checkOutItems.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Areas\en\Views\Assignee\removefirearm.cshtml" />
+    <Content Include="Areas\en\Views\Assignee\checkinfirearm.cshtml" />
+    <Content Include="Areas\en\Views\Assignee\checkoutfirearm.cshtml" />
+    <Content Include="Areas\en\Views\Firearm\checkFirearms.cshtml" />
+    <Content Include="Areas\en\Views\Firearm\checkFirearms_list.cshtml" />
+    <Content Include="Areas\en\Views\Firearm\details.cshtml" />
+    <Content Include="Areas\en\Views\Location\add.cshtml" />
+    <Content Include="Areas\en\Views\Location\edit.cshtml" />
+    <Content Include="Areas\en\Views\Location\Index.cshtml" />
+    <Content Include="Areas\en\Views\Reader\Index.cshtml" />
+    <Content Include="Areas\en\Views\Reader\add.cshtml" />
+    <Content Include="Areas\en\Views\Reader\edit.cshtml" />
+    <Content Include="Areas\en\Views\Map\Index.cshtml" />
+    <Content Include="Areas\en\Views\Map\edit.cshtml" />
+    <Content Include="Areas\en\Views\Map\definelocation.cshtml" />
+    <Content Include="Areas\en\Views\Map\addloc.cshtml" />
+    <Content Include="Areas\en\Views\Firearm\getScanFirearms.cshtml" />
+    <Content Include="Areas\en\Views\Assignee\profile.cshtml" />
+    <Content Include="Areas\en\Views\Assignee\profile_firearms.cshtml" />
+    <Content Include="Areas\en\Views\Assignee\profile_firearms_list.cshtml" />
+    <Content Include="Areas\en\Views\Assignee\profile_inout.cshtml" />
+    <Content Include="Areas\en\Views\Assignee\profile_inout_list.cshtml" />
+    <Content Include="Areas\en\Views\Home\weaponCount.cshtml" />
+    <Content Include="Areas\en\Views\Home\countLocation.cshtml" />
+    <Content Include="Areas\en\Views\Home\countAssignee.cshtml" />
+    <None Include="Areas\en\Views\Map\Index1.cshtml" />
+    <Content Include="assets\mapplic\apartment.json" />
+    <Content Include="assets\mapplic\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\mapplic\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\mapplic\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\mapplic\fonts\FontAwesome.otf" />
+    <Content Include="Areas\en\Views\Map\add.cshtml" />
+    <Content Include="Areas\en\Views\Zone\Index.cshtml" />
+    <Content Include="Areas\en\Views\track\Location.cshtml" />
+    <Content Include="Areas\en\Views\track\location_list.cshtml" />
+    <Content Include="Areas\en\Views\track\location_modal.cshtml" />
+    <Content Include="Areas\en\Views\Door\add.cshtml" />
+    <Content Include="Areas\en\Views\Door\edit.cshtml" />
+    <Content Include="Areas\en\Views\Door\Index.cshtml" />
+    <Content Include="Areas\en\Views\WeaponAccess\AccessDoor.cshtml" />
+    <Content Include="Areas\en\Views\WeaponAccess\AccessDoorAdd.cshtml" />
+    <Content Include="Areas\en\Views\WeaponAccess\accessdoor_list.cshtml" />
+    <Content Include="Areas\en\Views\WeaponAccess\AccessDoorEdit.cshtml" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
+    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LayoutEN.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdminEN.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Areas\en\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\en\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\en\Views\Home\Index.cshtml" />
+    <Content Include="assets\global\plugins\bootstrap-hover-dropdown\LICENSE" />
+    <Content Include="assets\global\plugins\bootstrap-hover-dropdown\README.md" />
+    <Content Include="assets\global\plugins\bootstrap-switch\LICENSE" />
+    <Content Include="assets\global\plugins\bootstrap-switch\README.md" />
+    <Content Include="assets\global\plugins\bootstrap\fonts\bootstrap\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\global\plugins\bootstrap\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\global\plugins\bootstrap\fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\global\plugins\bootstrap\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <Content Include="assets\global\plugins\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\global\plugins\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\global\plugins\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\global\plugins\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\global\plugins\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="assets\global\plugins\jquery-slimscroll\README.md" />
+    <Content Include="assets\global\plugins\jquery-slimscroll\slimScroll.jquery.json" />
+    <Content Include="assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.eot" />
+    <Content Include="assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.woff" />
+    <Content Include="assets\global\plugins\uniform\css\uniform.default.scss" />
+    <Content Include="assets\global\plugins\uniform\README.md" />
+    <Content Include="Areas\en\Views\Firearm\add.cshtml" />
+    <Content Include="Areas\en\Views\Firearmtype\add.cshtml" />
+    <Content Include="Areas\en\Views\Firearmtype\Index.cshtml" />
+    <Content Include="Areas\en\Views\Firearmtype\edit.cshtml" />
+    <Content Include="Areas\en\Views\Manufacturer\add.cshtml" />
+    <Content Include="Areas\en\Views\Manufacturer\edit.cshtml" />
+    <Content Include="Areas\en\Views\Manufacturer\Index.cshtml" />
+    <Content Include="Areas\en\Views\Supplier\add.cshtml" />
+    <Content Include="Areas\en\Views\Supplier\edit.cshtml" />
+    <Content Include="Areas\en\Views\Supplier\Index.cshtml" />
+    <Content Include="Areas\en\Views\Condition\add.cshtml" />
+    <Content Include="Areas\en\Views\Condition\edit.cshtml" />
+    <Content Include="Areas\en\Views\Condition\Index.cshtml" />
+    <Content Include="Areas\en\Views\Accessories\add.cshtml" />
+    <Content Include="Areas\en\Views\Accessories\edit.cshtml" />
+    <Content Include="Areas\en\Views\Accessories\Index.cshtml" />
+    <Content Include="Areas\en\Views\Firearm\edit.cshtml" />
+    <Content Include="Areas\en\Views\Storage\add.cshtml" />
+    <Content Include="Areas\en\Views\Storage\edit.cshtml" />
+    <Content Include="Areas\en\Views\Storage\Index.cshtml" />
+    <Content Include="Areas\en\Views\Firearm\Index.cshtml" />
+    <Content Include="Areas\en\Views\Firearm\search_list.cshtml" />
+    <Content Include="Areas\en\Views\Firearm\picture_list.cshtml" />
+    <Content Include="Areas\en\Views\AssigneeType\add.cshtml" />
+    <Content Include="Areas\en\Views\AssigneeType\edit.cshtml" />
+    <Content Include="Areas\en\Views\AssigneeType\Index.cshtml" />
+    <Content Include="Areas\en\Views\Assignee\add.cshtml" />
+    <Content Include="Areas\en\Views\Assignee\Index.cshtml" />
+    <Content Include="Areas\en\Views\Assignee\search_list.cshtml" />
+    <Content Include="Areas\en\Views\Assignee\edit.cshtml" />
+    <Content Include="Areas\en\Views\Firearm\checkout.cshtml" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Views\Home\Chat.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4960</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4831/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

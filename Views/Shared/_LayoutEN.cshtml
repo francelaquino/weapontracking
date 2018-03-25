@@ -1,0 +1,357 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>Trackline | Weapon Tracking System</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="~/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/global/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+
+    <link href="~/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/assets/global/plugins/select2/css/select2.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+    <link href="~/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+    <link href="~/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="~/assets/layouts/layout3/css/custom.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME LAYOUT STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+
+
+    <!--[if lt IE 9]>
+    <script src="~/assets/global/plugins/respond.min.js"></script>
+    <script src="~/assets/global/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="~/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+
+
+    <script src="~/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+
+    <script src="~/assets/global/plugins/clockface/js/clockface.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script src="~/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+
+
+    <script src="~/assets/global/scripts/app.js" type="text/javascript"></script>
+
+    <script src="~/assets/pages/scripts/components-select2.min.js" type="text/javascript"></script>
+    <script src="~/assets/pages/scripts/components-date-time-pickers.min.js" type="text/javascript"></script>
+    <script src="~/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="~/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
+    <script src="~/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        window.setTimeout(function () {
+            closeMessage();
+        }, 5000);
+
+
+
+
+        $(document).on("keypress", "form", function (event) {
+            return event.keyCode != 13;
+        })
+
+
+
+        $(document).ready(function () {
+
+
+            $('input').click(function () {
+                this.select();
+            });
+
+            $("input:text,form").attr("autocomplete", "off");
+
+
+           
+
+
+
+            $("#dialog-modal").dialog({
+                autoOpen: false,
+                height: 'auto',
+                resizable: false,
+                modal: true,
+                open: function (event, ui) {
+                    $(this).parent().focus();
+                },
+                close: $("#dialog-modal").trigger("reset")
+            });
+
+
+
+
+
+
+        });
+
+        function closeMessage() {
+            $("#alertMessage").fadeOut();
+        }
+
+
+    </script>
+</head>
+<!-- END HEAD -->
+<body class="page-container-bg-solid page-boxed">
+    <!-- BEGIN HEADER -->
+    <div class="page-header">
+        <!-- BEGIN HEADER TOP -->
+        <div class="page-header-top">
+            <div class="container">
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <a href="index.html">
+                        <img src="~/assets/pages/img/trackline.png" alt="logo" class="logo-default " style="margin: 0px; width: 220px; ">
+                    </a>
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler"></a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN TOP NAVIGATION MENU -->
+                <div class="top-menu">
+                    <ul class="nav navbar-nav pull-right">
+
+
+
+                        <li class="dropdown dropdown-user dropdown-dark">
+                            <span class="dropdown-toggle">
+                                <span class="username username-hide-mobile">Welcome : System User</span>
+                            </span>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+        </div>
+        <!-- END HEADER TOP -->
+        <!-- BEGIN HEADER MENU -->
+        <div class="page-header-menu">
+            <div class="container">
+
+                <!-- BEGIN MEGA MENU -->
+                <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
+                <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
+                <div class="hor-menu  ">
+                    <ul class="nav navbar-nav">
+                        <li class="menu-dropdown classic-menu-dropdown ">
+                            <a href="~/en/home">
+                                Home
+                            </a>
+                        </li>
+                        <li class="menu-dropdown classic-menu-dropdown ">
+                            <a href="javascript:;">
+                                Weapon
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="dropdown-menu pull-left">
+                                <li class=" ">
+                                    <a href="~/en/firearm/add" class="nav-link  "> New Weapon </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="~/en/firearm" class="nav-link  "> Search Weapon </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="~/en/assignee/assignfirearm" class="nav-link  "> Assign Weapon </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="~/en/assignee/checkoutfirearm" class="nav-link  "> Checkout Firearm </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="~/en/assignee/checkinfirearm" class="nav-link  "> Checkin Firearm </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="~/en/firearm/checkfirearms" class="nav-link  "> Audit Firearm </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="menu-dropdown classic-menu-dropdown ">
+                            <a href="javascript:;">
+                                Assignee
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="dropdown-menu pull-left">
+                                <li class=" ">
+                                    <a href="~/en/assignee/add" class="nav-link  "> New Assignee </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="~/en/assignee" class="nav-link  "> Search Assignee </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-dropdown classic-menu-dropdown ">
+                            <a href="~/en/zone">
+                                Zone
+                            </a>
+
+                        </li>
+                        <li class="menu-dropdown classic-menu-dropdown ">
+                            <a href="javascript:;">
+                                Track
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="dropdown-menu pull-left">
+                                <li class=" ">
+                                    <a href="~/en/track/location" class="nav-link  "> Track Weapon by Location</a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="menu-dropdown classic-menu-dropdown ">
+                            <a href="javascript:;">
+                                Settings
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="dropdown-menu pull-left">
+                                <li class=" ">
+                                    <a href="~/en/supplier" class="nav-link  "> Supplier </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="~/en/storage" class="nav-link  "> Storage </a>
+                                </li>
+
+                                <li class=" ">
+                                    <a href="~/en/manufacturer" class="nav-link  "> Manufacturer </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="~/en/firearmtype" class="nav-link  "> Firearm Type </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="~/en/accessories" class="nav-link  "> Accessories </a>
+                                </li>
+                                <li class=" ">
+                                    <a href="~/en/assigneetype" class="nav-link  "> Assignee Type </a>
+                                </li>
+
+
+
+
+
+                            </ul>
+                        </li>
+
+                        <li class="menu-dropdown classic-menu-dropdown ">
+                            <a href="javascript:;">
+                                Access Control
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="dropdown-menu pull-left">
+                                <li class=" ">
+                                    <a href="~/en/weaponaccess/accessdoor" class="nav-link  "> Weapon Access Door </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- END MEGA MENU -->
+            </div>
+        </div>
+        <!-- END HEADER MENU -->
+    </div>
+    <!-- END HEADER -->
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+        <!-- BEGIN CONTENT -->
+        <div class="page-content-wrapper">
+            <!-- BEGIN CONTENT BODY -->
+            <!-- BEGIN PAGE CONTENT BODY -->
+            <div class="page-content">
+                <div class="container">
+                    @RenderBody()
+
+
+                    <div id="dialog-modal" title="" style="padding: 0px; overflow: visible; z-index: -100;">
+                        <div id="modal_container" style="width: auto; height: auto; overflow: visible; z-index: -100;"></div>
+                    </div>
+
+
+                    <!-- END PAGE CONTENT INNER -->
+                </div>
+            </div>
+            <!-- END PAGE CONTENT BODY -->
+            <!-- END CONTENT BODY -->
+        </div>
+        <!-- END CONTENT -->
+        <!-- BEGIN QUICK SIDEBAR -->
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    <!-- BEGIN INNER FOOTER -->
+    <div class="page-footer">
+        <div class="container">
+            2016 &copy; TrackLine
+            <a href="#" title="" target="_blank">Weapon Tracking System</a>
+        </div>
+    </div>
+    <div class="scroll-to-top">
+        <i class="icon-arrow-up"></i>
+    </div>
+    <!-- END INNER FOOTER -->
+    <!-- END FOOTER -->
+
+
+
+
+    <div class="modal fade draggable-modal  bs-modal-lg" id="dialog-modal" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title   font-red-sunglo"></h4>
+                </div>
+                <div class="modal-body" id="modal_container">
+
+                    <div class="modal-body">
+                        <img src="" id="imagepreview" style="width: 100%; ">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "Accessories";
+    Layout = "~/Views/Shared/_LayoutEN.cshtml";
+}
+
+<script type="text/javascript">
+ 
+    $(document).ready(function () {
+       
+        $('#txttoday').datepicker().on('changeDate', function (e) {
+            loadWeaponCount();
+        });
+    });
+
+    function loadWeaponCount() {
+        $('#weaponCount').html("<p>&nbsp;</p><p>&nbsp;</p>");
+        $('#weaponCount').append("<p class='loading'><img src='@Url.Content("~/assets/pages/img/loading.gif")' /></p>");
+        $('#weaponCount').load('@Url.Action("weaponcount")', { date: $('#txtdate').val() });
+    }
+
+    function loadLocationCount() {
+        $('#locationCount').html("<p>&nbsp;</p><p>&nbsp;</p>");
+        $('#locationCount').append("<p class='loading'><img src='@Url.Content("~/assets/pages/img/loading.gif")' /></p>");
+        $('#locationCount').load('@Url.Action("countLocation")');
+    }
+    function loadAssigneeCount() {
+        $('#assigneeCount').html("<p>&nbsp;</p><p>&nbsp;</p>");
+        $('#assigneeCount').append("<p class='loading'><img src='@Url.Content("~/assets/pages/img/loading.gif")' /></p>");
+        $('#assigneeCount').load('@Url.Action("countAssignee")');
+    }
+
+    
+</script>
+
+
+<!-- BEGIN PAGE BREADCRUMBS -->
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="index.html">Home</a>
+        <i class="fa fa-circle"></i>
+    </li>
+</ul>
+<!-- END PAGE BREADCRUMBS -->
+<!-- BEGIN PAGE CONTENT INNER -->
+<div class="page-content-inner">
+
+
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="portlet light ">
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-1 control-label">From</label>
+                <div class="col-md-3">
+                    <div class=" input-group input-medium date date-picker" id="txttoday" data-date-format="dd-M-yyyy">
+                        @Html.TextBox("txtdate", @ViewData["date"], new { @class = "form-control", @readonly = "readonly" })
+                        <span class="input-group-btn ">
+                            <button class="btn default" type="button">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+        <div class="row margin-top-10" id="weaponCount">
+
+        </div>
+        <div class="row margin-top-10">
+            <div class="portlet">
+                <div class="portlet-body">
+
+
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="portlet light bordered">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <span class="caption-subject font-blue bold uppercase">Checkout Weapon Counter</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm blue  btn-circle" href="javascript:;" onclick="loadLocationCount()" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                            Refresh
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="scroller" id="locationCount" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 col-sm-6">
+                        <div class="portlet light bordered">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <span class="caption-subject font-blue bold uppercase">Checkout Weapon by Assignee</span>
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm blue  btn-circle" href="javascript:;" onclick="loadAssigneeCount()" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                            Refresh
+                                        </a>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="scroller" id="assigneeCount" style="height: 300px;" data-always-visible="1" data-rail-visible="0">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+</div>
+
+
+
+<script type="text/javascript">
+    loadWeaponCount();
+    loadLocationCount();
+    loadAssigneeCount();
+</script>

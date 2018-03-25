@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Location";
+    Layout = "~/Views/Shared/_LayoutAdminEN.cshtml";
+}
+<script type="text/javascript">
+
+    function validate() {
+
+        if ($("#txtlocation").val() == "") {
+            alert("Please fill location.");
+            $("#txtlocation").focus();
+            return false;
+        }
+
+
+
+        if (!confirm("Are you sure you want to submit this form?")) {
+
+            return false;
+        }
+        $("#Form1").submit();
+
+    }
+
+
+    function isExist() {
+
+        $.ajax({
+            url: '@Url.Action("isExist")',
+            type: 'POST',
+            data: "{id:'',gid:'" + $("#txtlocation").val() + "'}",
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data != "") {
+                    alert("Location aready exist!");
+                } else {
+                    validate();
+                }
+            },
+            error: function () {
+                alert("Connection Error");
+            }
+        });
+    }
+
+
+</script>
+
+<!-- BEGIN PAGE CONTENT INNER -->
+<div class="page-content-inner">
+
+    @if (!string.IsNullOrEmpty(@Session["message"].ToString()))
+    {
+
+        <div id="alertMessage" class="note note-info">
+            <p> @Session["message"].ToString() <a href="javascript:;" class="remove" onclick="closeMessage()" style="float:right"><i class="fa fa-times" aria-hidden="true"></i></a></p>
+        </div>
+    }
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="portlet light ">
+        <div class="portlet-title">
+            <div class="caption font-red-sunglo">
+                <span class="caption-subject  "> New Location</span>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light ">
+            
+
+            <div class="portlet-body ">
+                @using (Html.BeginForm("savelocation", "location", FormMethod.Post, new { @class = "form-horizontal", id = "Form1", enctype = "multipart/form-data" }))
+                                                    {
+
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Location</label>
+                            <div class="col-md-7">
+                                @Html.TextBox("txtlocation", "", new { @class = "form-control require", maxlength = "100", @autofocus = "autofocus" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Description</label>
+                            <div class="col-md-7">
+                                @Html.TextBox("txtdescription", "", new { @class = "form-control ", maxlength = "100"})
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="button" onclick="isExist()" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+</div>
+
+
+@{
+    Session["message"] = "";
+}
+
+<script>
+    $("#menLocation").addClass("active");
+</script>

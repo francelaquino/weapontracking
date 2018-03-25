@@ -1,0 +1,98 @@
+﻿@model List<FMS.Models.mdlMap>
+
+@{
+    ViewBag.Title = "Map";
+    Layout = "~/Views/Shared/_LayoutEN.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/assets/mapplic/css/magnific-popup.css">
+<link rel="stylesheet" type="text/css" href="~/assets/mapplic/mapplic/mapplic.css">
+<script type="text/javascript" src="~/assets/mapplic/js/hammer.min.js"></script>
+<script type="text/javascript" src="~/assets/mapplic/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="~/assets/mapplic/js/script.js"></script>
+<script type="text/javascript" src="~/assets/mapplic/js/magnific-popup.js"></script>
+<script type="text/javascript" src="~/assets/mapplic/mapplic/mapplic.js"></script>
+
+
+
+<!-- BEGIN PAGE BREADCRUMBS -->
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="#">Zone</a>
+        <i class="fa fa-circle"></i>
+    </li>
+</ul>
+<div class="page-content-inner">
+
+
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="portlet light ">
+        <div class="portlet-title">
+            <div class="caption font-red-sunglo">
+                <span class="caption-subject  "> Zone</span>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light ">
+
+            <div class="portlet-body ">
+                @{
+                    foreach (var records in Model)
+                    {
+                         <a href="~/en/zone?map=@records.ID" class="icon-btn">
+                            <i class="fa fa-map-o" aria-hidden="true"></i>
+                            <div> @records.MAP </div>
+                            <span class="badge badge-danger"> @records.LOCATIONS </span>
+                        </a>
+                    }
+                }
+                <div class="row"><p></p></div>
+                <div class="row">
+                    <div class="map-container" style="width:97%">
+
+                        <!-- Map -->
+                        <div id="mapplic"></div>
+                        <div id="second"></div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+</div>
+@Html.TextBox("txtmap", @ViewData["mapid"], new { @class = "hidden" })
+
+<script type="text/javascript">
+    var data = JSON.parse('@Html.Raw(@ViewData["maprecord"].ToString())');
+
+    $(document).ready(function () {
+        var map = $('#mapplic').mapplic({
+            source: data,
+            minimap: false,
+            fillcolor: '#4d5e6d',
+
+
+        });
+
+
+
+
+
+
+        var self = map.data('mapplic');
+
+
+
+    });
+
+</script>
+

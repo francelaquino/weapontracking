@@ -1,0 +1,96 @@
+﻿@model List<FMS.Models.mdlStorage>
+@{
+    ViewBag.Title = "Storage";
+    Layout = "~/Views/Shared/_LayoutEN.cshtml";
+}
+<script src="~/assets/pages/scripts/ui-modals.min.js" type="text/javascript"></script>
+<link href="~/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="~/assets/global/scripts/datatable.js" type="text/javascript"></script>
+<script src="~/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+<script src="~/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+<script src="~/assets/pages/scripts/ui-modals.min.js" type="text/javascript"></script>
+<link href="~/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+
+
+
+<script type="text/javascript">
+
+    function vRecords() {
+
+        $('#dataContainer').html("<p>&nbsp;</p><p>&nbsp;</p>");
+        $('#dataContainer').append("<p class='loading'><img src='@Url.Content("~/assets/pages/img/loading.gif")' /></p>");
+        $('#dataContainer').load('@Url.Action("search_list")');
+    }
+</script>
+
+
+
+<!-- BEGIN PAGE BREADCRUMBS -->
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="index.html">Assignee</a>
+        <i class="fa fa-circle"></i>
+    </li>
+</ul>
+<!-- END PAGE BREADCRUMBS -->
+<!-- BEGIN PAGE CONTENT INNER -->
+<div class="page-content-inner">
+
+
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="portlet light ">
+        <div class="portlet-title">
+            <div class="caption font-red-sunglo">
+                <span class="caption-subject  ">Search Assignee</span>
+            </div>
+        </div>
+
+        <div class="table-toolbar">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="btn-group pull-right">
+                        <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">
+                            Action
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="~/en/assignee/add">
+                                    <i class="fa fa-search" aria-hidden="true"></i> Add New Assignee
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="portlet-body">
+            <div class="row"><p></p></div>
+            <div id="dataContainer">
+            </div>
+
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+</div>
+
+
+
+<script type="text/javascript">
+
+    vRecords();
+
+    $(document).ready(function () {
+        $('#data_list').dataTable();
+
+    });
+
+</script>
+
+

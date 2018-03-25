@@ -1,0 +1,119 @@
+﻿@model FMS.Models.mdlDoor
+@{
+
+    ViewBag.Title = "Door";
+    Layout = null;
+}
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $("#Form1_Modal").submit(function () {
+            $.post(
+                        $(this).attr('action'),
+                        $(this).serialize(),
+                        function () {
+                            location.reload();
+                        }
+                );
+            return false;
+        })
+
+    });
+
+
+
+    function validate() {
+
+        if ($("#txtdoor").val() == "") {
+            alert("Please fill Door Name.");
+            $("#txtdoor").focus();
+            return false;
+        }
+
+        if ($("#txtlocation").val() == "") {
+            alert("Please fill Location.");
+            $("#txtlocation").focus();
+            return false;
+        }
+
+
+
+        if (!confirm("Are you sure you want to submit this form?")) {
+
+            return false;
+        }
+        $("#Form1_Modal").submit();
+
+    }
+
+
+
+    function isDelete() {
+        if (confirm("Are you sure you want to delete this record?")) {
+
+            $.ajax({
+                url: '@Url.Action("isDelete")',
+                type: 'POST',
+                data: "{id:'" + $("#txtid").val() + "'}",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data != "") {
+                        alert("You cannot delete this data this. This data is referred to elsewhere transactions!");
+                    } else {
+                        location.reload();
+                    }
+                },
+                error: function () {
+                    alert("Connection Error");
+                }
+            });
+        }
+    }
+
+</script>
+
+
+@using (Html.BeginForm("updatedoor", "door", FormMethod.Post, new { @class = "form-horizontal", id = "Form1_Modal", enctype = "multipart/form-data" }))
+{
+
+    @Html.TextBox("txtid", @Model.ID, new { @class = "hidden" })
+    @Html.TextBox("txtgid", @Model.GID, new { @class = "hidden" })
+
+    <div class="form-body">
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">Door Name</label>
+            <div class="col-md-7">
+                @Html.TextBox("txtdoor", @Model.DOOR, new { @class = "form-control require", maxlength = "100" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-md-3 control-label">Location</label>
+            <div class="col-md-7">
+                @Html.DropDownList("txtlocation", (IEnumerable<SelectListItem>)ViewData["location"], new { @class = "form-control require" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Description</label>
+            <div class="col-md-7">
+                @Html.TextBox("txtdescription", @Model.DESCRIPTION, new { @class = "form-control require", maxlength = "100" })
+            </div>
+        </div>
+
+
+    </div>
+    <div class="form-actions">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-9">
+                <button type="button" onclick="validate()" class="btn btn-primary">Save</button>
+                <button type="button" id="btndelete" class="btn btn-primary" onclick="isDelete();"> Delete </button>
+                <button type="button" class="btn btn-primary btn-outline" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+}

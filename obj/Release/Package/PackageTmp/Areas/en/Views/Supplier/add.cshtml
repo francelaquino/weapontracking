@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "Supplier";
+    Layout = "~/Views/Shared/_LayoutEN.cshtml";
+}
+<script type="text/javascript">
+    $(document).on("keypress", "form", function (event) {
+        return event.keyCode != 13;
+    })
+
+    function validate() {
+
+        if ($("#txtsupplier").val() == "") {
+            alert("Please fill supplier.");
+            $("#txtsupplier").focus();
+            return false;
+        }
+
+
+
+        if (!confirm("Are you sure you want to submit this form?")) {
+
+            return false;
+        }
+        $("#Form1").submit();
+
+    }
+
+
+    function isExist() {
+
+        $.ajax({
+            url: '@Url.Action("isExist")',
+            type: 'POST',
+            data: "{id:'',gid:'" + $("#txtsupplier").val() + "'}",
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data != "") {
+                    alert("Supplier aready exist!");
+                } else {
+                    validate();
+                }
+            },
+            error: function () {
+                alert("Connection Error");
+            }
+        });
+    }
+
+
+</script>
+
+
+<!-- BEGIN PAGE BREADCRUMBS -->
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="index.html">Supplier</a>
+        <i class="fa fa-circle"></i>
+    </li>
+</ul>
+<!-- END PAGE BREADCRUMBS -->
+<!-- BEGIN PAGE CONTENT INNER -->
+<div class="page-content-inner">
+
+    @if (!string.IsNullOrEmpty(@Session["message"].ToString()))
+    {
+
+        <div class="note note-info">
+            <p> @Session["message"].ToString()</p>
+        </div>
+    }
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="portlet light ">
+        <div class="portlet-title">
+            <div class="caption font-red-sunglo">
+                <span class="caption-subject  "> New Supplier</span>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light ">
+            <div class="table-toolbar">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="btn-group pull-right">
+                            <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">
+                                Action
+                                <i class="fa fa-angle-down"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a href="~/en/supplier">
+                                        <i class="fa fa-search" aria-hidden="true"></i> Search 
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portlet-body ">
+                @using (Html.BeginForm("savesupplier", "supplier", FormMethod.Post, new { @class = "form-horizontal", id = "Form1", enctype = "multipart/form-data" }))
+                                                    {
+
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Supplier</label>
+                            <div class="col-md-7">
+                                @Html.TextBox("txtsupplier", "", new { @class = "form-control require", maxlength = "100", @autofocus = "autofocus" })
+                            </div>
+                        </div>
+                       
+
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="button" onclick="isExist()" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+</div>
+
+
+@{
+    Session["message"] = "";
+}

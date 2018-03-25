@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Door";
+    Layout = "~/Views/Shared/_LayoutAdminEN.cshtml";
+}
+<script type="text/javascript">
+   
+    function validate() {
+
+        
+        if ($("#txtdoor").val() == "") {
+            alert("Please fill Door Name.");
+            $("#txtdoor").focus();
+            return false;
+        }
+        
+       
+        if ($("#txtlocation").val() == "") {
+            alert("Please fill Location.");
+            $("#txtlocation").focus();
+            return false;
+        }
+
+        if (!confirm("Are you sure you want to save this record?")) {
+
+            return false;
+        }
+        $("#Form1").submit();
+
+    }
+
+
+
+    
+
+
+</script>
+
+
+
+<!-- BEGIN PAGE CONTENT INNER -->
+<div class="page-content-inner">
+
+    @if (!string.IsNullOrEmpty(@Session["message"].ToString()))
+    {
+
+        <div id="alertMessage" class="note note-info">
+            <p> @Session["message"].ToString() <a href="javascript:;" class="remove" onclick="closeMessage()" style="float:right"><i class="fa fa-times" aria-hidden="true"></i></a></p>
+        </div>
+    }
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="portlet light ">
+        <div class="portlet-title">
+            <div class="caption font-red-sunglo">
+                <span class="caption-subject  "> New Door</span>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light ">
+           
+
+            <div class="portlet-body ">
+                @using (Html.BeginForm("savedoor", "door", FormMethod.Post, new { @class = "form-horizontal", id = "Form1", enctype = "multipart/form-data" }))
+                {
+
+                    <div class="form-body">
+                        
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Door Name</label>
+                            <div class="col-md-7">
+                                @Html.TextBox("txtdoor", "", new { @class = "form-control require", maxlength = "100" })
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Location</label>
+                            <div class="col-md-7">
+                                @Html.DropDownList("txtlocation", (IEnumerable<SelectListItem>)ViewData["location"], new { @class = "form-control require" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Description</label>
+                            <div class="col-md-7">
+                                @Html.TextBox("txtdescription", "", new { @class = "form-control ", maxlength = "100" })
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="button" onclick="validate()" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+</div>
+
+
+@{
+    Session["message"] = "";
+}
+
+<script>
+    $("#menDoor").addClass("active");
+</script>

@@ -1,0 +1,47 @@
+﻿@model List<FMS.Models.mdlFirearm>
+@{
+    Layout = null;
+}
+<table class="table table-striped table-bordered table-hover  order-column" id="data_list">
+    <thead>
+        <tr>
+            <th>Firearm Type</th>
+            <th>Assigned To </th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var records in Model)
+            {
+                <tr>
+
+                    <td><a href="javascript:void(0)" onclick="displayFirearmPictures('@records.DEFPIC')">@records.FIREARMTYPE </a> </td>
+                    <td> @records.NAME </td>
+                    <td> @records.STATUS </td>
+                    <td>
+                        <a target="_blank" href="javascript:void(0)" onclick="details('@records.ID')" data-toggle="modal" class="btn btn-sm green btn-outline ">
+                            <i class="fa fa-edit"></i> Details
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+        $('#data_list').dataTable({ bFilter: false });
+
+    });
+
+</script>
+
+

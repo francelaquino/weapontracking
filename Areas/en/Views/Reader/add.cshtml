@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "Reader";
+    Layout = "~/Views/Shared/_LayoutAdminEN.cshtml";
+}
+<script type="text/javascript">
+ 
+    function validate() {
+
+        if ($("#txtmodel").val() == "") {
+            alert("Please fill Reader Model.");
+            $("#txtmodel").focus();
+            return false;
+        }
+        if ($("#txtreader").val() == "") {
+            alert("Please fill Reader Name.");
+            $("#txtreader").focus();
+            return false;
+        }
+        if ($("#txtport").val() == "") {
+            alert("Please fill Port.");
+            $("#txtport").focus();
+            return false;
+        }
+        if ($("#txtip").val() == "") {
+            alert("Please fill Ip Address.");
+            $("#txtip").focus();
+            return false;
+        }
+        if ($("#txtinterval").val() == "") {
+            alert("Please fill Time Interval.");
+            $("#txtinterval").focus();
+            return false;
+        }
+        if ($("#txtlocation").val() == "") {
+            alert("Please fill Location.");
+            $("#txtlocation").focus();
+            return false;
+        }
+
+        if (!confirm("Are you sure you want to save this record?")) {
+
+            return false;
+        }
+        $("#Form1").submit();
+
+    }
+
+
+
+    
+
+
+</script>
+
+
+
+<!-- BEGIN PAGE CONTENT INNER -->
+<div class="page-content-inner">
+
+    @if (!string.IsNullOrEmpty(@Session["message"].ToString()))
+    {
+
+        <div id="alertMessage" class="note note-info">
+            <p> @Session["message"].ToString() <a href="javascript:;" class="remove" onclick="closeMessage()" style="float:right"><i class="fa fa-times" aria-hidden="true"></i></a></p>
+        </div>
+    }
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="portlet light ">
+        <div class="portlet-title">
+            <div class="caption font-red-sunglo">
+                <span class="caption-subject  "> New Reader</span>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light ">
+           
+
+            <div class="portlet-body ">
+                @using (Html.BeginForm("savereader", "reader", FormMethod.Post, new { @class = "form-horizontal", id = "Form1", enctype = "multipart/form-data" }))
+                {
+
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Reader Model</label>
+                            <div class="col-md-7">
+                                @Html.DropDownList("txtmodel", (IEnumerable<SelectListItem>)ViewData["rfidmodel"], new { @class = "form-control require" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Reader Name</label>
+                            <div class="col-md-7">
+                                @Html.TextBox("txtreader", "", new { @class = "form-control require", maxlength = "100" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Port</label>
+                            <div class="col-md-7">
+                                @Html.TextBox("txtport", "", new { @class = "form-control require", maxlength = "100" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Ip Address</label>
+                            <div class="col-md-7">
+                                @Html.TextBox("txtip", "", new { @class = "form-control require", maxlength = "100" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Time Interval</label>
+                            <div class="col-md-7">
+                                @Html.DropDownList("txtinterval", (IEnumerable<SelectListItem>)ViewData["interval"], new { @class = "form-control require" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Location</label>
+                            <div class="col-md-7">
+                                @Html.DropDownList("txtlocation", (IEnumerable<SelectListItem>)ViewData["location"], new { @class = "form-control require" })
+                            </div>
+                        </div>
+                        
+
+
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="button" onclick="validate()" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+</div>
+
+
+@{
+    Session["message"] = "";
+}
+
+<script>
+    $("#menReader").addClass("active");
+</script>

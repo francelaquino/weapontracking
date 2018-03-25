@@ -1,0 +1,42 @@
+﻿@model List<FMS.Models.mdlTrack>
+@{
+    Layout = null;
+}
+<table class="table table-striped table-bordered table-hover  order-column" id="data_list">
+    <thead>
+        <tr>
+            <th>Location</th>
+            <th>Date/Time</th>
+            <th>RFID</th>
+            <th>Weapon</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var records in Model)
+            {
+                <tr>
+                    <td><a href="javascript:void(0)" onclick="showMapLocation('@records.LOCATIONID')">@records.LOCATION </a> </td>
+                    <td>@records.READTIME</td>
+                    <td>@records.TAGS</td>
+                    <td><a href="javascript:void(0)" onclick="displayFirearmPictures('@records.DEFPIC')">@records.FIREARMTYPE </a> </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+        $('#data_list').dataTable({ bFilter: false });
+
+    });
+
+</script>
+
+

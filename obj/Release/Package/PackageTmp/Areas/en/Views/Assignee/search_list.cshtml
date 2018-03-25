@@ -1,0 +1,65 @@
+﻿@model List<FMS.Models.mdlAssignee>
+@{
+    Layout = null;
+}
+<table class="table table-striped table-bordered table-hover  order-column" id="data_list">
+    <thead>
+        <tr>
+            <th> RFID </th>
+            <th>Batch No.</th>
+            <th>Name</th>
+            <th>ID No.</th>
+            <th>Assignee Type</th>
+            <th>Firearms</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var records in Model)
+            {
+                <tr>
+                    <td> @records.RFID </td>
+                    <td> @records.BATCHNO </td>
+                    <td> @records.NAME </td>
+                    <td> @records.IDNO </td>
+                    <td> @records.ASSIGNEETYPE </td>
+                    <td>
+                        @if (Convert.ToInt16(@records.FIREARMS) <= 0)
+                        {
+                            <span class="badge badge-default "> @records.FIREARMS </span>
+                           
+                        }
+                        else
+                        {
+                            <a class="badge badge-danger" href="assignee/removefirearm/@records.ID/@records.GID">@records.FIREARMS</a>
+                        }
+                        
+                    </td>
+
+                    <td>
+                        <a target="_blank" href="assignee/edit/@records.ID/@records.GID" data-toggle="modal" class="btn btn-sm green btn-outline ">
+                            <i class="fa fa-edit"></i> Edit
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+        $('#data_list').dataTable();
+
+    });
+
+</script>
+
+

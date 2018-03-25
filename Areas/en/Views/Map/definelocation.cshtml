@@ -1,0 +1,139 @@
+﻿@model List<FMS.Models.mdlMap>
+
+@{
+    ViewBag.Title = "Map";
+    Layout = "~/Views/Shared/_LayoutAdminEN.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/assets/mapplic/css/magnific-popup.css">
+<link rel="stylesheet" type="text/css" href="~/assets/mapplic/mapplic/mapplic.css">
+<script type="text/javascript" src="~/assets/mapplic/js/hammer.min.js"></script>
+<script type="text/javascript" src="~/assets/mapplic/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="~/assets/mapplic/js/script.js"></script>
+<script type="text/javascript" src="~/assets/mapplic/js/magnific-popup.js"></script>
+<script type="text/javascript" src="~/assets/mapplic/mapplic/mapplic.js"></script>
+
+<script type="text/javascript">
+    function addLocation(x, y) {
+        $('#modal_container').html("");
+        $('#modal_container').append("<p class='loading'><img src='@Url.Content("~/assets/pages/img/loading.gif")' /></p>");
+        $('#modal_container').load('@Url.Content("~/en/map/addloc")', { id: x, gid: y });
+        $('.modal-title').text("Add Location");
+        $('#dialog-modal').modal();
+    }
+    function deleteMapLocation() {
+        if ($("#txtloc").val() == "") {
+            return false;
+        }
+        if (confirm("Are you sure you want to delete the location?")) {
+
+            $.ajax({
+                url: '@Url.Action("deleteMapLocation")',
+                type: 'POST',
+                data: "{id:'" + $("#txtmap").val() + "',gid:'" + $("#txtloc").val() + "'}",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (data == "") {
+                        location.href = 'definelocation?map=' + $("#txtmap").val();
+                    }
+                },
+                error: function () {
+                    alert("Connection Error");
+                }
+            });
+        }
+    }
+</script>
+
+
+<!-- BEGIN PAGE CONTENT INNER -->
+<div class="page-content-inner">
+
+    
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="portlet light ">
+        <div class="portlet-title">
+            <div class="caption font-red-sunglo">
+                <span class="caption-subject  "> Define Zone Location</span>
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light ">
+           
+            <div class="portlet-body ">
+                @{
+                    foreach (var records in Model)
+                    {
+                        <a href="~/en/map/definelocation?map=@records.ID" class="icon-btn">
+                            <i class="fa fa-map-o" aria-hidden="true"></i>
+                            <div> @records.MAP </div>
+                            <span class="badge badge-danger"> @records.LOCATIONS </span>
+                        </a>
+                    }
+                }
+                <div class="row"><p></p></div>
+                <div class="row">
+                    <div class="map-container" style="width:97%">
+
+                        <!-- Map -->
+                        <div id="mapplic"></div>
+                        <div id="second"></div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="row">
+                    <label class="col-md-12 control-label">Location</label>
+                    <div class="col-md-3">
+                        @Html.DropDownList("txtloc", (IEnumerable<SelectListItem>)ViewData["location"], new { @class = "form-control" })
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" onclick="deleteMapLocation()" class="btn btn-danger">Delete Location</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+</div>
+@Html.TextBox("txtmap", @ViewData["mapid"], new { @class = "hidden" })
+
+<script type="text/javascript">
+    var data = JSON.parse('@Html.Raw(@ViewData["maprecord"].ToString())'); 
+    
+    $(document).ready(function () {
+        var map = $('#mapplic').mapplic({
+            source: data,
+            height: 460,
+            minimap: false,
+            fillcolor: '#4d5e6d',
+            maxscale: 1,
+            mapfill: true,
+        });
+
+  
+
+
+
+        map.on('dblclick', function (e) {
+            var x = (e.pageX - self.map.offset().left) / self.map.width(),
+                    y = (e.pageY - self.map.offset().top) / self.map.height();
+            addLocation(x, y);
+        });
+       
+        var self = map.data('mapplic');
+
+
+
+    });
+
+    $("#menMap").addClass("active");
+</script>
+

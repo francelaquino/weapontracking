@@ -1,0 +1,186 @@
+﻿@model List<FMS.Models.mdlStorage>
+@{
+    ViewBag.Title = "Storage";
+    Layout = "~/Views/Shared/_LayoutEN.cshtml";
+}
+<script src="~/assets/pages/scripts/ui-modals.min.js" type="text/javascript"></script>
+<link href="~/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="~/assets/global/scripts/datatable.js" type="text/javascript"></script>
+<script src="~/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+<script src="~/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+<script src="~/assets/pages/scripts/ui-modals.min.js" type="text/javascript"></script>
+<link href="~/assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+   
+        $("#txtlocation").change(function () {
+            $.ajax({
+                type: "POST",
+                url: "@Url.Content("~/weaponaccess/getDoorLocation")",
+                contentType: "application/json;charset=utf-8",
+            data: "{id:'" + $("#txtlocation").val() + "'}",
+            dataType: "json",
+            success: function (result) {
+                $("#txtdoor").empty();
+                $("#txtdoor").append("<option value=''>--Select--</option>");
+                $.each(result, function (i, list) {
+                    $("#txtdoor").append("<option value='" + list.ID + "'>" + list.DOOR + "</option>");
+                });
+            },
+            error: function (error) {
+                alert(error);
+            }
+
+
+        });
+    });
+
+    });
+
+
+
+
+    function vRecords() {
+        if ($("#txtdoor").val() != "") {
+            $('#dataContainer').html("<p>&nbsp;</p><p>&nbsp;</p>");
+            $('#dataContainer').append("<p class='loading'><img src='@Url.Content("~/assets/pages/img/loading.gif")' /></p>");
+            $('#dataContainer').load('@Url.Action("accessdoor_list")', {  door: $("#txtdoor").val() });
+        }
+    }
+
+    function displayFirearmPictures(path) {
+        $('#imagepreview').attr('src', path);
+        $('.modal-title').text("Image Preview");
+        $('#dialog-modal').modal();
+    }
+
+
+    function details(id) {
+        $('#modal_container').html("");
+        $('#modal_container').append("<p class='loading'><img src='@Url.Content("~/assets/pages/img/loading.gif")' /></p>");
+        $('#modal_container').load('@Url.Content("~/en/firearm/details")', { id: id });
+        $('.modal-title').text("Firearm Details");
+        $('#dialog-modal').modal();
+    }
+
+    function edit(id) {
+        $('#modal_container').html("");
+        $('#modal_container').append("<p class='loading'><img src='@Url.Content("~/assets/pages/img/loading.gif")' /></p>");
+        $('#modal_container').load('@Url.Content("~/en/weaponaccess/AccessDoorEdit")', { id: id });
+        $('.modal-title').text("Edit Weapon Access Door");
+        $('#dialog-modal').modal();
+    }
+
+</script>
+
+
+
+<!-- BEGIN PAGE BREADCRUMBS -->
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="index.html">Access Control</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="index.html">Weapon Access Door</a>
+    </li>
+</ul>
+<!-- END PAGE BREADCRUMBS -->
+<!-- BEGIN PAGE CONTENT INNER -->
+<div class="page-content-inner">
+
+
+    <!-- BEGIN SAMPLE FORM PORTLET-->
+    <div class="portlet light ">
+        <div class="portlet-title">
+            <div class="caption font-red-sunglo">
+                <span class="caption-subject  ">Weapon Access Door</span>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="portlet-body">
+            <div class="table-toolbar">
+                <div class="row">
+
+                    <div class="form-group">
+                        
+                        <label class="col-md-1 control-label">Location</label>
+                        <div class="col-md-3">
+                            @Html.DropDownList("txtlocation", (IEnumerable<SelectListItem>)ViewData["location"], new { @class = "form-control select2" })
+                        </div>
+
+                   
+
+                        <label class="col-md-1 control-label">Door</label>
+                        <div class="col-md-3">
+                            <select class="form-control select2" id="txtdoor">
+                                
+                            </select>
+                        </div>
+                        <button type="button" onclick="vRecords()" class="btn green"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+
+                    </div>
+                    <div class="row"></div>
+                    <div class="form-group margin-top-10">
+                        <label class="col-md-9 control-label"></label>
+                       
+                    </div>
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+                    <div class="col-md-12">
+                        <div class="btn-group pull-right">
+                            <button class="btn green  btn-outline dropdown-toggle" data-toggle="dropdown">
+                                Action
+                                <i class="fa fa-angle-down"></i>
+                            </button>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a href="~/en/weaponaccess/accessdooradd">
+                                        <i class="fa fa-plus"></i> Add New Weapon Access Door
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+            <div class="row"><p></p></div>
+            <div id="dataContainer">
+            </div>
+
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+    <!-- END SAMPLE FORM PORTLET-->
+</div>
+
+
+
+<script type="text/javascript">
+
+    vRecords();
+
+
+</script>
+
+

@@ -1,0 +1,29 @@
+/* here you can put your own css to customize and override the theme */
+
+.require{
+    background-color:#fcfaec;
+
+}
+
+.tr_backcolor_clicked {
+    background-color:#f9e3e3 !important;
+}
+
+.loading{
+    width:100%;
+    text-align:center;
+
+}
+
+
+.btn-circle-micro {
+  width: 19px;
+  height: 19px;
+  text-align: center;
+  padding: 1px 0;
+  font-size: 11px;
+  line-height: 0.1;
+  border-radius: 30px;
+}
+
+

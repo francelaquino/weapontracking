@@ -1,0 +1,120 @@
+﻿@model FMS.Models.mdlAssignee
+@{
+    ViewBag.Title = "Supplier";
+    Layout = "~/Views/Shared/_LayoutEN.cshtml";
+}
+
+<link href="~/assets/pages/css/profile.min.css" rel="stylesheet" type="text/css" />
+<link href="~/assets/pages/css/ticket.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    function vRecords(id) {
+
+        $('#dataContainer').html("<p>&nbsp;</p><p>&nbsp;</p>");
+        $('#dataContainer').append("<p class='loading'><img src='@Url.Content("~/assets/pages/img/loading.gif")' /></p>");
+        $('#dataContainer').load('@Url.Action("profile_firearms_list")', {id: id});
+    }
+    function displayFirearmPictures(path) {
+        $('#imagepreview').attr('src', path);
+        $('.modal-title').text("Image Preview");
+        $('#dialog-modal').modal();
+    }
+</script>
+<ul class="page-breadcrumb breadcrumb">
+    <li>
+        <a href="#">Assignee</a>
+        <i class="fa fa-circle"></i>
+    </li>
+    <li>
+        <a href="#">Profile</a>
+    </li>
+</ul>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PROFILE SIDEBAR -->
+        <div class="profile-sidebar">
+            <!-- PORTLET MAIN -->
+            <div class="portlet light profile-sidebar-portlet ">
+                <!-- SIDEBAR USERPIC -->
+                <div class="profile-userpic">
+                    <img src="@Model.PICTURE" class="img-responsive" alt="">
+                </div>
+                <!-- END SIDEBAR USERPIC -->
+                <!-- SIDEBAR USER TITLE -->
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name"> @Model.NAME</div>
+                    <div class="profile-usertitle-job"> @Model.ASSIGNEETYPE </div>
+                </div>
+                <!-- END SIDEBAR USER TITLE -->
+                <!-- SIDEBAR MENU -->
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li>
+                            <a href="~/en/assignee/profile/@Model.ID/@Model.GID">
+                                <i class="fa fa-user" aria-hidden="true"></i> Personal Information
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="~/en/assignee/profile_firearms/@Model.ID/@Model.GID">
+                                <i class="fa fa-check-circle-o" aria-hidden="true"></i> Assigned Firearm(s)
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="~/en/assignee/profile_inout/@Model.ID/@Model.GID">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i> In/Out Logs
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- END MENU -->
+            </div>
+            <!-- END PORTLET MAIN -->
+            <!-- PORTLET MAIN -->
+            <div class="portlet light ">
+                <!-- STAT --><h4><p>Firearm(s)</p></h4>
+                <div class="row list-separated ">
+
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="uppercase profile-stat-title"> @Model.FIREARMS </div>
+                        <div class="uppercase profile-stat-text"> Assigned </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="uppercase profile-stat-title"> @Model.CHECKINS </div>
+                        <div class="uppercase profile-stat-text"> Checkin </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="uppercase profile-stat-title"> @Model.CHECKOUTS </div>
+                        <div class="uppercase profile-stat-text"> Checkout </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- END PORTLET MAIN -->
+        </div>
+        <!-- END BEGIN PROFILE SIDEBAR -->
+        <!-- BEGIN TICKET DETAILS CONTENT -->
+        <div class="app-ticket app-ticket-details">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light ">
+                        <div class="portlet-title tabbable-line">
+                            <div class="caption caption-md">
+                                <i class="icon-globe theme-font hide"></i>
+                                <span class="caption font-red-sunglo">Assign Firearm(s)</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div id="dataContainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PROFILE CONTENT -->
+        </div>
+    </div>
+
+
+<script>
+    vRecords('@Model.ID');
+</script>

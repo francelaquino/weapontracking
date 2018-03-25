@@ -1,0 +1,214 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <title>Mapplic - Custom Interactive Map Plugin - Apartment Example</title>
+
+    <!-- Viewport for Responsivity -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="description" content="Image map of an apartment, an example of using Mapplic, a premium custom interactive map plugin to display custom image or vector (SVG) maps.">
+
+    <!-- Stylesheets -->
+    <link href='http://fonts.googleapis.com/css?family=Maven+Pro:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="~/assets/mapplic/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/mapplic/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="~/assets/mapplic/mapplic/mapplic.css">
+    <!-- Internet Explorer -->
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" type="text/css" href="mapplic/mapplic-ie.css">
+        <script type="text/javascript" src="js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrap">
+
+        <!-- Site header -->
+        <header id="header">
+            <div class="inner">
+                <nav>
+                    <ul id="main-menu">
+                        <li><a href="#" class="usage">Usage</a></li>
+                        <li><a href="http://codecanyon.net/user/sekler?ref=sekler#contact" target="_blank">Contact</a></li>
+                        <li><a href="http://codecanyon.net/item/custom-interactive-map-jquery-plugin/6275001?ref=sekler" target="_blank" class="button">Purchase<span>$18</span></a></li>
+                    </ul>
+                </nav>
+
+                <a id="logo" href="./"></a>
+
+                <h1>The most <strong>advanced</strong> custom interactive map<br> plugin on the web</h1>
+
+                <div class="clear"></div>
+            </div>
+        </header>
+
+        <!-- Site content -->
+        <div id="content">
+
+            <section id="map-section" class="inner over">
+                <div class="editor-window">
+                    <div class="window-mockup brown"></div>
+                    <div class="editor-body">
+                        <code>
+                            {<br>
+                            &nbsp;&nbsp;&nbsp;"id": "newlandmark",<br>
+                            &nbsp;&nbsp;&nbsp;"title": "New Landmark",<br>
+                            &nbsp;&nbsp;&nbsp;"description": "Creating a new landmark is that easy!",<br>
+                            &nbsp;&nbsp;&nbsp;"x": "<span class="mapplic-coordinates-x">0.0000</span>",<br>
+                            &nbsp;&nbsp;&nbsp;"y": "<span class="mapplic-coordinates-y">0.0000</span>",<br>
+                            &nbsp;&nbsp;&nbsp;...<br>
+                            }
+                        </code>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <div class="window-mockup">
+                        <div class="window-bar"></div>
+                    </div>
+                    <!-- Map -->
+                    <div id="mapplic"></div>
+                    <div id="second"></div>
+                </div>
+
+                <ul id="examples">
+                    <li><a href="./">Mall Map</a></li>
+                    <li class="active"><a href="apartment.html">Apartment</a></li>
+                    <li><a href="world.html">World</a></li>
+                    <li><a href="continents.html">Continents</a></li>
+                    <li><a href="europe.html">Europe</a></li>
+                    <li><a href="usa.html">USA</a></li>
+                    <li><a href="canada.html">Canada</a></li>
+                    <li><a href="australia.html">Australia</a></li>
+                    <li><a href="france.html">France</a></li>
+                    <li><a href="germany.html">Germany</a></li>
+                    <li><a href="italy.html">Italy</a></li>
+                    <li><a href="uk.html">United Kingdom</a></li>
+                    <li><a href="netherlands.html">Netherlands</a></li>
+                    <li><a href="switzerland.html">Switzerland</a></li>
+                    <li><a href="russia.html">Russia</a></li>
+                    <li><a href="china.html">China</a></li>
+                    <li><a href="brazil.html">Brazil</a></li>
+                </ul>
+            </section>
+
+            <section class="purple">
+                <div class="inner">
+                    <h1>Bring your <strong>images</strong> and <strong>vector graphics</strong> to life!</h1>
+                    <p>It can be used for multi storey buildings, airports, shopping malls, department stores, resorts, hospitals, harbors, campings or festivals, ski tracks, sport stadiums, cruise ships or anything you can think of, your imagination is the limit. It's also perfectly suitable for touchscreen kiosk maps.</p>
+                </div>
+            </section>
+
+            <section class="inner features">
+                <div class="container">
+                    <div class="one-third icon landmark">
+                        <h3>Unlimited landmarks</h3>
+                        <p>Any number of locations with unique pins and various actions</p>
+                    </div>
+                    <div class="one-third icon layer">
+                        <h3>Unlimited floors</h3>
+                        <p>Multiple floors are supported without any limitation</p>
+                    </div>
+                    <div class="one-third icon link">
+                        <h3>Deeplinking</h3>
+                        <p>Every location can be referenced by it's own URL</p>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="one-third icon browser">
+                        <h3>Browser support</h3>
+                        <p>Works great in every major browser (even Internet Explorer 8)</p>
+                    </div>
+                    <div class="one-third  icon responsive">
+                        <h3>Responsive design</h3>
+                        <p>Provides optimal experience across a wide range of devices</p>
+                    </div>
+                    <div class="one-third icon mobile">
+                        <h3>Touch optimised</h3>
+                        <p>Touchscreen devices, like tablets and smartphones are also supported</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="blue">
+                <div class="inner">
+                    <a id="wordpress" href="http://www.mapplic.com" target="_blank"><img src="images/wp.png" alt="WordPress"><strong>WordPress</strong> version available!</a>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Site footer -->
+        <footer id="footer">
+            <div class="inner">
+                <a id="contact" href="http://codecanyon.net/user/sekler?ref=sekler#contact" target="_blank"></a>
+                <span>Copyright &copy; 2016 <a href="http://codecanyon.net/user/sekler?ref=sekler">sekler</a>. All rights reserved.</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="~/assets/mapplic/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/assets/mapplic/js/hammer.min.js"></script>
+    <script type="text/javascript" src="~/assets/mapplic/js/jquery.mousewheel.js"></script>a
+    <script type="text/javascript" src="~/assets/mapplic/js/script.js"></script>
+    <script type="text/javascript" src="~/assets/mapplic/js/magnific-popup.js"></script>
+    <script type="text/javascript" src="~/assets/mapplic/mapplic/mapplic.js"></script>
+    <script type="text/javascript">
+        var data = "{'mapwidth':'2000','mapheight':'2000','categories':[{'id':'furniture','title':'Furniture','color':'#4cd3b8','show':'false'},{'id':'rooms','title':'Rooms','color':'#63aa9c','show':'true'}],'levels':[{'id':'lower','title':'Lower floor','map':'images/apartment/lower.jpg','minimap':'images/apartment/lower-small.jpg','locations':[{'id':'coffeetable','title':'Coffee Table','about':'The best place to spend the afternoon','description':'<p>This is an awesome coffee table.<p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean viverra laoreet imperdiet. Praesent viverra, enim at malesuada dignissim, ante purus vestibulum turpis, nec molestie ipsum mauris non risus. In hac habitasse platea dictumst. Integer porta dignissim magna, at sollicitudin neque aliquam eget. Pellentesque dapibus, augue eu ornare mattis, est mauris volutpat ligula, ac ornare turpis turpis sit amet elit.</p>','category':'furniture','pin':'red','link':'http://codecanyon.net/user/sekler?ref=sekler','action':'lightbox','x':'0.2050','y':'0.4660','zoom':'3'},{'id':'stairstop','title':'Stairs','about':'Stairs to the top floor','description':'Let's go <a class=\'mapplic-popup-image\' href=\'images/hq.jpg\'>upstairs</a>!','category':'furniture','x':'0.5137','y':'0.6136','zoom':'3'},{'id':'diningtable','title':'Dining Table','about':'An eight-person dining table','description':'<img src=\'images/logo.png\' alt=\'Mapplic\'><p>An eight-person dining table with an image.<p>','category':'furniture','x':'0.4746','y':'0.2883','zoom':'3'},{'id':'coffeemachine','title':'Coffee Machine','about':'For the perfect coffee','description':'Coffee Machine','category':'furniture','action':'tooltip','link':'http://www.codecanyon.net/','x':'0.6792','y':'0.3459','zoom':'3'},{'id':'workingtable','title':'Working Table','about':'This is where the magic happens','description':'It's the perfect home workspace you've always dreamed about.','category':'furniture','x':'0.6285','y':'0.1480','zoom':'3'},{'id':'kitchen','title':'Kitchen','about':'Well equipped kitchen','description':'<p>Welcome to the kitchen.</p>','category':'rooms','link':'http://codecanyon.net/user/sekler?ref=sekler','pin':'hidden','x':'0.665','y':'0.46','zoom':'3'},{'id':'dining','title':'Dining room','about':'Could be a motto','description':'The main living room <!--<iframe width=\'320\' height=\'180\' src=\'//www.youtube.com/embed/HGy9i8vvCxk\' frameborder=\'0\' allowfullscreen></iframe>-->','category':'rooms','pin':'hidden','x':'0.3','y':'0.4','zoom':'3'}]},{'id':'upper','title':'Upper Floor','map':'images/apartment/upper.jpg','minimap':'images/apartment/upper-small.jpg','locations':[{'id':'livingup','title':'Living room','about':'Upper level living','description':'<img src=\'images/logo.png\' alt=\'Mapplic\'><p>I could spend the whole day here!</p>','category':'rooms','x':'0.49','y':'0.36','zoom':'2'},{'id':'kingbed','title':'King bed','about':'Very comfortable king size bed','description':'A king size bed situated in the main bedroom on the first floor.','category':'furniture','x':'0.6564','y':'0.2782','zoom':'3'},{'id':'bathroom','title':'Bathroom','about':'Or anything you want to show in the list','description':'Take a bath','category':'rooms','pin':'hidden','x':'0.7843','y':'0.4035','zoom':'3'}]}]}";
+        $(document).ready(function () {
+            var map = $('#mapplic').mapplic({
+                source: data,
+                height: 460,
+                mapfill: true,
+                lightbox: true,
+                maxscale: 1
+            });
+
+            // EVENTS
+            // Map ready
+            map.on('mapready', function (e, self) {
+                console.log('Map is ready!')
+                // self grants direct access to the map object
+                // The map will be focused on the washing machine by default
+                //self.moveTo(0.67, 0.62, 3, 0);
+            });
+
+            // Location opened
+            map.on('locationopened', function (e, location) {
+                // location grants full access to the location
+                console.log(location.title + ' opened.');
+            });
+
+            // Location closed
+            map.on('locationclosed', function (e) {
+                console.log('Location closed.');
+            });
+
+            // Level switched
+            map.on('levelswitched', function (e, level) {
+                console.log('Switched to ' + level + ' level.');
+            });
+
+            // Position changed
+            map.on('positionchanged', function (e, self) {
+                // self grants direct access to the map object
+                //console.log('Pan or zoom performed, current scale: ' + self.scale);
+            });
+
+            // METHODS
+            // Getting mapplic object
+            var self = map.data('mapplic');
+
+            map.on('locationclosed', function (e) {
+                //console.log(self);
+            });
+        });
+    </script>
+</body>
+</html>
